@@ -35,14 +35,14 @@ RSpec.describe ImageFacade do
         'location' => ''
       }
 
-      image = ImageFacade.get_image(location_params)
+      response_data = ImageFacade.get_image(location_params)
 
-      expect(image).to be_a(Hash)
-      expect(image).to have_key(:stat)
-      expect(image[:stat]).to eq("fail")
+      expect(response_data).to be_a(Hash)
+      expect(response_data).to have_key(:stat)
+      expect(response_data[:stat]).to eq("fail")
 
-      expect(image).to have_key(:message)
-      expect(image[:message]).to eq("Parameterless searches have been disabled. Please use flickr.photos.getRecent instead.")
+      expect(response_data).to have_key(:message)
+      expect(response_data[:message]).to eq("Parameterless searches have been disabled. Please use flickr.photos.getRecent instead.")
     end
   end
 end
