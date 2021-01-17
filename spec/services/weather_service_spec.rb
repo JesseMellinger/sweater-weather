@@ -32,7 +32,7 @@ RSpec.describe 'WeatherService', :vcr do
     expect(response[:current]).to have_key(:humidity)
     expect(response[:current][:humidity]).to be_an(Integer)
     expect(response[:current]).to have_key(:uvi)
-    expect(response[:current][:uvi]).to be_an(Float)
+    expect(response[:current][:uvi]).to be_an(Integer)
     expect(response[:current]).to have_key(:visibility)
     expect(response[:current][:visibility]).to be_an(Integer)
 
