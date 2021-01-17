@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe ForecastFacade do
   describe 'class methods' do
-    it '.get_forecast', :vcr do
+    it '.get_forecast (happy path)', :vcr do
       location_params = {
         'location' => 'denver,co'
       }
 
       forecast = ForecastFacade.get_forecast(location_params)
-      
+
       expect(forecast).to be_a(Forecast)
       expect(forecast.id).to be_nil
 
@@ -26,7 +26,7 @@ RSpec.describe ForecastFacade do
       expect(forecast.current_weather).to have_key(:humidity)
       expect(forecast.current_weather[:humidity]).to be_an(Integer)
       expect(forecast.current_weather).to have_key(:uvi)
-      expect(forecast.current_weather[:uvi]).to be_a(Float)
+      expect(forecast.current_weather[:uvi]).to be_a_kind_of(Numeric)
       expect(forecast.current_weather).to have_key(:visibility)
       expect(forecast.current_weather[:visibility]).to be_an(Integer)
       expect(forecast.current_weather).to have_key(:conditions)
@@ -71,6 +71,19 @@ RSpec.describe ForecastFacade do
         expect(hour).to have_key(:icon)
         expect(hour[:icon]).to be_a(String)
       end
+    end
+
+    it '.get_forecast (sad path)', :vcr do
+      location_params = {
+        'location' => ''
+      }
+
+      response_data = ForecastFacade.get_forecast(location_params)
+
+      expect(response_data[:info][:statuscode]).to eq(400)
+      expect(response_data[:info][:messages].first).to eq("Illegal argument from request: Insufficient info for location")
+      expect(response_data[:results].first[:providedLocation][:location]).to eq("")
+      expect(response_data[:results].first[:providedLocation][:locations]).to be_nil
     end
   end
 end
