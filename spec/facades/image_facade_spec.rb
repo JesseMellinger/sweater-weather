@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ImageFacade do
   describe 'class methods' do
-    it '.get_image', :vcr do
+    it '.get_image (happy path)', :vcr do
       location_params = {
         'location' => 'denver,co'
       }
@@ -28,6 +28,21 @@ RSpec.describe ImageFacade do
 
       expect(image.image).to_not have_key(:title)
       expect(image.image).to_not have_key(:owner)
+    end
+
+    it '.get_image (sad path)', :vcr do
+      location_params = {
+        'location' => ''
+      }
+
+      image = ImageFacade.get_image(location_params)
+
+      expect(image).to be_a(Hash)
+      expect(image).to have_key(:stat)
+      expect(image[:stat]).to eq("fail")
+
+      expect(image).to have_key(:message)
+      expect(image[:message]).to eq("Parameterless searches have been disabled. Please use flickr.photos.getRecent instead.")
     end
   end
 end
