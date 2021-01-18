@@ -82,13 +82,4 @@ RSpec.describe 'WeatherService' do
       expect(hour[:weather].first[:icon]).to be_a(String)
     end
   end
-
-  it 'should return an error message when bad params are passed (sad path)', :vcr do
-    lat, lng = nil, nil
-
-    response_data = WeatherService.get_weather(lat, lng)
-    
-    expect(response_data[:cod]).to eq("400")
-    expect(response_data[:message]).to eq("Nothing to geocode")
-  end
 end
