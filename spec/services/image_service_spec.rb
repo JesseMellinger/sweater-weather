@@ -38,7 +38,7 @@ RSpec.describe 'ImageService' do
     expect(response_data).to have_key(:stat)
     expect(response_data[:stat]).to eq("fail")
 
-    expect(image).to have_key(:message)
+    expect(response_data).to have_key(:message)
     expect(response_data[:message]).to eq("Parameterless searches have been disabled. Please use flickr.photos.getRecent instead.")
   end
 end
