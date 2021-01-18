@@ -23,7 +23,7 @@ describe 'users' do
     expect(endpoint_response[:data][:type]).to be_a(String)
 
     expect(endpoint_response[:data]).to have_key(:id)
-    expect(endpoint_response[:data][:id]).to be_an(String)
+    expect(endpoint_response[:data][:id]).to be_a(String)
 
     expect(endpoint_response[:data]).to have_key(:attributes)
     expect(endpoint_response[:data][:attributes]).to be_a(Hash)
@@ -35,7 +35,7 @@ describe 'users' do
     expect(endpoint_response[:data][:attributes][:api_key]).to be_a(String)
   end
 
-  it 'returns a 400 status code with a description of why the request wasn’t successful when passwords dont\'t match' do
+  it 'returns a 400 status code with a description of why the request wasn’t successful when passwords dont\'t match (sad path)' do
     payload = {
                 "email": "whatever@example.com",
                 "password": "password",
@@ -54,7 +54,7 @@ describe 'users' do
     expect(endpoint_response[:message].first).to eq("Password confirmation doesn't match Password")
   end
 
-  it 'returns a 400 status code with a description of why the request wasn’t successful when email already taken' do
+  it 'returns a 400 status code with a description of why the request wasn’t successful when email already taken (sad path)' do
     email = "whatever@example.com"
     password = "123"
     password_confirmation = "123"
@@ -79,7 +79,7 @@ describe 'users' do
     expect(endpoint_response[:message].first).to eq("Email has already been taken")
   end
 
-  it 'returns a 400 status code with a description of why the request wasn’t successful when missing a field' do
+  it 'returns a 400 status code with a description of why the request wasn’t successful when missing a field (sad path)' do
     payload = {
                 "email": "",
                 "password": "password",
