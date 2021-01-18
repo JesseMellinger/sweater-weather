@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'forecast' do
-  it 'returns forecast data that includes id, type, and attributes', :vcr do
+  it 'returns forecast data that includes id, type, and attributes (happy path)', :vcr do
     location_params = {
-      location: 'denver,co'
+      'location': 'denver,co'
     }
 
     get '/api/v1/forecast', params: location_params
@@ -103,5 +103,23 @@ describe 'forecast' do
     expect(forecast[:data][:attributes][:current_weather][:alerts]).to be_nil
     expect(forecast[:data][:attributes][:current_weather][:pressure]).to be_nil
     expect(forecast[:data][:attributes][:current_weather][:clouds]).to be_nil
+  end
+
+  it 'should return an error message when bad params are passed (sad path)', :vcr do
+    location_params = {
+      'location': ''
+    }
+
+    get '/api/v1/forecast', params: location_params
+
+    response_data = JSON.parse(response.body, symbolize_names: true)
+    
+    expect(response_data).to be_a(Hash)
+
+    expect(response_data).to have_key(:message)
+    expect(response_data[:message]).to eq("Illegal argument from request: Insufficient info for location")
+
+    expect(response_data).to have_key(:status_code)
+    expect(response_data[:status_code]).to eq(400)
   end
 end
