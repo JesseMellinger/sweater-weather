@@ -43,7 +43,7 @@ describe 'sessions' do
     expect(endpoint_response[:data][:attributes][:api_key]).to be_a(String)
   end
 
-  it 'returns a 400 status code with a description that authentication failed when credentials are bad(sad path)' do
+  it 'returns a 400 status code with a description that authentication failed when credentials are bad (sad path)' do
     payload = {
                 "email": "whatever@example.com",
                 "password": "123"
@@ -73,7 +73,7 @@ describe 'sessions' do
     expect(response.status).to eq(400)
 
     endpoint_response = JSON.parse(response.body, symbolize_names: true)
-    
+
     expect(endpoint_response).to be_a(Hash)
     expect(endpoint_response).to have_key(:message)
     expect(endpoint_response[:message]).to eq("Authentication failed")
