@@ -34,4 +34,68 @@ describe 'users' do
     expect(endpoint_response[:data][:attributes]).to have_key(:api_key)
     expect(endpoint_response[:data][:attributes][:api_key]).to be_a(String)
   end
+
+  it 'returns a 400 status code with a description of why the request wasn’t successful when passwords dont\'t match' do
+    payload = {
+                "email": "whatever@example.com",
+                "password": "password",
+                "password_confirmation": "123"
+              }
+
+    post '/api/v1/users', params: payload.to_json
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    endpoint_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(endpoint_response).to be_a(Hash)
+    expect(endpoint_response).to have_key(:message)
+    expect(endpoint_response[:message].first).to eq("Password confirmation doesn't match Password")
+  end
+
+  it 'returns a 400 status code with a description of why the request wasn’t successful when email already taken' do
+    email = "whatever@example.com"
+    password = "123"
+    password_confirmation = "123"
+
+    User.create!(email: email, password: password, password_confirmation: password_confirmation)
+
+    payload = {
+                "email": "whatever@example.com",
+                "password": "password",
+                "password_confirmation": "password"
+              }
+
+    post '/api/v1/users', params: payload.to_json
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    endpoint_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(endpoint_response).to be_a(Hash)
+    expect(endpoint_response).to have_key(:message)
+    expect(endpoint_response[:message].first).to eq("Email has already been taken")
+  end
+
+  it 'returns a 400 status code with a description of why the request wasn’t successful when missing a field' do
+    payload = {
+                "email": "",
+                "password": "password",
+                "password_confirmation": "password"
+              }
+
+    post '/api/v1/users', params: payload.to_json
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+
+    endpoint_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(endpoint_response).to be_a(Hash)
+    expect(endpoint_response).to have_key(:message)
+    expect(endpoint_response[:message].first).to eq("Email can't be blank")
+    expect(endpoint_response[:message].second).to eq("Email is invalid")
+  end
 end
