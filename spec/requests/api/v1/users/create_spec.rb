@@ -14,7 +14,7 @@ describe 'users' do
     expect(response.status).to eq(201)
 
     endpoint_response = JSON.parse(response.body, symbolize_names: true)
-    
+
     expect(endpoint_response).to be_a(Hash)
     expect(endpoint_response).to have_key(:data)
     expect(endpoint_response[:data]).to be_a(Hash)
@@ -23,7 +23,7 @@ describe 'users' do
     expect(endpoint_response[:data][:type]).to be_a(String)
 
     expect(endpoint_response[:data]).to have_key(:id)
-    expect(endpoint_response[:data][:id]).to be_an(Integer)
+    expect(endpoint_response[:data][:id]).to be_an(String)
 
     expect(endpoint_response[:data]).to have_key(:attributes)
     expect(endpoint_response[:data][:attributes]).to be_a(Hash)
