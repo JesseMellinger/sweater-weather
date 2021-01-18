@@ -47,6 +47,8 @@ describe 'backgrounds' do
 
     get '/api/v1/backgrounds', params: location_params
 
+    expect(response).to have_http_status(400)
+
     response_data = JSON.parse(response.body, symbolize_names: true)
 
     expect(response_data).to be_a(Hash)
@@ -55,8 +57,5 @@ describe 'backgrounds' do
 
     expect(response_data).to have_key(:message)
     expect(response_data[:message]).to eq("Parameterless searches have been disabled. Please use flickr.photos.getRecent instead.")
-
-    expect(response_data).to have_key(:status_code)
-    expect(response_data[:status_code]).to eq(400)
   end
 end
