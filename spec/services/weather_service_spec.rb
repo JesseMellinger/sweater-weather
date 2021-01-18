@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'WeatherService', :vcr do
-  it 'should return parsed response data' do
+RSpec.describe 'WeatherService' do
+  it 'should return parsed response data (happy path)', :vcr do
     lat, lng = 39.7385, -104.9849
 
     response = WeatherService.get_weather(lat, lng)
@@ -32,7 +32,7 @@ RSpec.describe 'WeatherService', :vcr do
     expect(response[:current]).to have_key(:humidity)
     expect(response[:current][:humidity]).to be_an(Integer)
     expect(response[:current]).to have_key(:uvi)
-    expect(response[:current][:uvi]).to be_an(Integer)
+    expect(response[:current][:uvi]).to be_a_kind_of(Numeric)
     expect(response[:current]).to have_key(:visibility)
     expect(response[:current][:visibility]).to be_an(Integer)
 
