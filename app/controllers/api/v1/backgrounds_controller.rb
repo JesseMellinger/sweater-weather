@@ -3,7 +3,7 @@ class Api::V1::BackgroundsController < ApplicationController
     image = ImageFacade.get_image(location_params)
 
     return render json: ImageSerializer.new(image) if image.instance_of? Image
-    render json: image.merge({:status_code=>400})
+    render json: image, status: :bad_request
   end
 
   private
