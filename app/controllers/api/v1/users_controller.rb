@@ -4,6 +4,6 @@ class Api::V1::UsersController < ApplicationController
     user = User.new(payload)
 
     return render json: UserSerializer.new(user), status: :created if user.save
-    return render json: {:status=>400, :message=>user.errors.full_messages}
+    return render json: {:message=>user.errors.full_messages}, status: :bad_request
   end
 end
