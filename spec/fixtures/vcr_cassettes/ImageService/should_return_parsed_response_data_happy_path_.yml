@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.flickr.com/services/rest?api_key=<FLICKR_API_KEY>&extras=url_l&format=json&method=flickr.photos.search&per_page=1&tags=denver,co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Content-Length:
+      - '316'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 18 Jan 2021 00:02:11 GMT
+      Server:
+      - Apache/2.4.46 (Ubuntu)
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 cddde15c11afac53ac9fe7978dcfecd7.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - eaIW4_OOEYfNbOKwqkEXv_ZYXP0wibZv6p8QgRECzxgASWsalsG2MA==
+    body:
+      encoding: ASCII-8BIT
+      string: jsonFlickrApi({"photos":{"page":1,"pages":70986,"perpage":1,"total":"70986","photo":[{"id":"50846065993","owner":"7630637@N02","secret":"891c9459ce","server":"65535","farm":66,"title":"Old
+        Silver Mine - Colorado River Trail | Rocky Mountain National Park Colorado
+        '08","ispublic":1,"isfriend":0,"isfamily":0,"url_l":"https:\/\/live.staticflickr.com\/65535\/50846065993_891c9459ce_b.jpg","height_l":554,"width_l":1024}]},"stat":"ok"})
+  recorded_at: Mon, 18 Jan 2021 00:02:11 GMT
+recorded_with: VCR 6.0.0
