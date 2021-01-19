@@ -68,6 +68,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<MAPQUEST_API_KEY>') { ENV['MAPQUEST_API_KEY'] }
   config.filter_sensitive_data('<OPENWEATHER_API_KEY>') { ENV['OPENWEATHER_API_KEY'] }
   config.filter_sensitive_data('<FLICKR_API_KEY>') { ENV['FLICKR_API_KEY'] }
+  config.filter_sensitive_data('<YELP_API_KEY>') { ENV['YELP_API_KEY'] }
   config.configure_rspec_metadata!
   config.default_cassette_options = { re_record_interval: 7.days }
 end
