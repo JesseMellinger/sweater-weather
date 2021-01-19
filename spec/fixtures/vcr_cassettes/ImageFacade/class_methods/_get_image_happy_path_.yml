@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.flickr.com/services/rest?api_key=<FLICKR_API_KEY>&extras=url_l&format=json&method=flickr.photos.search&per_page=1&tags=denver,co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Content-Length:
+      - '278'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 19 Jan 2021 18:35:12 GMT
+      Server:
+      - Apache/2.4.46 (Ubuntu)
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 f49e01a353a799a551e27555a12dfa07.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - ORD53-C2
+      X-Amz-Cf-Id:
+      - hMG-A68Zp7JTYhsbtUSBvKJQqBdftYBvp9zpmX6XFhEK8ftC1XWDxA==
+    body:
+      encoding: ASCII-8BIT
+      string: jsonFlickrApi({"photos":{"page":1,"pages":72719,"perpage":1,"total":"72719","photo":[{"id":"50845574976","owner":"187478018@N07","secret":"28eda1bdd9","server":"65535","farm":66,"title":"Envelope
+        or Letterhead","ispublic":1,"isfriend":0,"isfamily":0,"url_l":"https:\/\/live.staticflickr.com\/65535\/50845574976_28eda1bdd9_b.jpg","height_l":768,"width_l":1024}]},"stat":"ok"})
+  recorded_at: Tue, 19 Jan 2021 18:35:11 GMT
+recorded_with: VCR 6.0.0

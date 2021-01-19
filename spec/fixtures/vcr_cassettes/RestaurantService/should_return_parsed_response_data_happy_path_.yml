@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.yelp.com/v3/businesses/search?limit=1&location=pueblo,co&open_at=1611083541&term=chinese
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <YELP_API_KEY>
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Ratelimit-Dailylimit:
+      - '5000'
+      Ratelimit-Remaining:
+      - '4959'
+      X-Zipkin-Id:
+      - 2103d77a6d83a78b
+      Server:
+      - envoy
+      Ratelimit-Resettime:
+      - '2021-01-20T00:00:00+00:00'
+      X-Routing-Service:
+      - routing-main--uswest2-5b584d59bc-6j57f; site=public_api_v3
+      X-B3-Sampled:
+      - '0'
+      X-Proxied:
+      - 10-69-90-30-uswest2aprod
+      X-Extlb:
+      - 10-69-90-30-uswest2aprod
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store, private, no-transform
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 19 Jan 2021 18:35:18 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-den8253-DEN
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"businesses": [{"id": "kQxM1xlaZfQmXpKaqMTNnw", "alias": "wonderful-bistro-pueblo",
+        "name": "Wonderful Bistro", "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/EIPRzs68vSrQ_2tCf5pQNw/o.jpg",
+        "is_closed": false, "url": "https://www.yelp.com/biz/wonderful-bistro-pueblo?adjust_creative=9bh8diqdhQKJU65ext3qLw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=9bh8diqdhQKJU65ext3qLw",
+        "review_count": 64, "categories": [{"alias": "chinese", "title": "Chinese"}],
+        "rating": 4.0, "coordinates": {"latitude": 38.319366, "longitude": -104.616623},
+        "transactions": ["delivery"], "price": "$$", "location": {"address1": "4602
+        N Elizabeth St", "address2": "Ste 120", "address3": "", "city": "Pueblo",
+        "zip_code": "81008", "country": "US", "state": "CO", "display_address": ["4602
+        N Elizabeth St", "Ste 120", "Pueblo, CO 81008"]}, "phone": "+17195440233",
+        "display_phone": "(719) 544-0233", "distance": 6632.28027227077}], "total":
+        14, "region": {"center": {"longitude": -104.5733642578125, "latitude": 38.27035217485165}}}'
+  recorded_at: Tue, 19 Jan 2021 18:35:18 GMT
+recorded_with: VCR 6.0.0
