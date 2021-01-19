@@ -37,12 +37,12 @@ class RoadTrip
   end
 
   def set_travel_time(route_and_forecast_data)
-    return format_time(route_and_forecast_data.first[:route][:time]) if !route_and_forecast_data.empty?
+    return format_time(route_and_forecast_data.first[:route][:realTime]) if !route_and_forecast_data.empty?
     return "Impossible Route"
   end
 
   def set_weather_at_eta(route_and_forecast_data)
-    return get_weather(route_and_forecast_data.last, route_and_forecast_data.first[:route][:time]) if !route_and_forecast_data.empty?
+    return get_weather(route_and_forecast_data.last, route_and_forecast_data.first[:route][:realTime]) if !route_and_forecast_data.empty?
     return {}
   end
 end
