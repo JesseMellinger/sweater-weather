@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 19 Jan 2021 18:47:53 GMT
+      - Tue, 19 Jan 2021 18:51:03 GMT
       Server:
       - Apache/2.4.46 (Ubuntu)
       X-Content-Type-Options:
@@ -37,14 +37,14 @@ http_interactions:
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 8b557fcfe676507ad235f89c0a02c05b.cloudfront.net (CloudFront)
+      - 1.1 dc50b0effd72a7b2c19bcb0909cfae82.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - ORD50-C1
+      - DEN50-C2
       X-Amz-Cf-Id:
-      - TVfegYflsyRe1GKkTtY-RjiYdvl_BkZypLk20uaoAnJ8lZP3C_YHbg==
+      - fftSDqmr1s_ca6M1XzsDXeccyX7ylsssxMxDvLPVKFuNdyhF9QBb1g==
     body:
       encoding: ASCII-8BIT
       string: jsonFlickrApi({"stat":"fail","code":3,"message":"Parameterless searches
         have been disabled. Please use flickr.photos.getRecent instead."})
-  recorded_at: Tue, 19 Jan 2021 18:47:53 GMT
+  recorded_at: Tue, 19 Jan 2021 18:51:03 GMT
 recorded_with: VCR 6.0.0

@@ -27,31 +27,31 @@ http_interactions:
       Ratelimit-Dailylimit:
       - '5000'
       Ratelimit-Remaining:
-      - '4944'
+      - '4941'
       X-Zipkin-Id:
-      - 48e534e25c6ec9e9
+      - fe57de518846bcac
       Server:
       - envoy
       Ratelimit-Resettime:
       - '2021-01-20T00:00:00+00:00'
       X-Routing-Service:
-      - routing-main--uswest2-5b584d59bc-w2ggt; site=public_api_v3
+      - routing-main--uswest2-5b584d59bc-nfkm9; site=public_api_v3
       X-B3-Sampled:
       - '0'
       X-Proxied:
-      - 10-69-157-99-uswest2bprod
+      - 10-69-166-32-uswest2bprod
       X-Extlb:
-      - 10-69-157-99-uswest2bprod
+      - 10-69-166-32-uswest2bprod
       Cache-Control:
       - max-age=0, must-revalidate, no-cache, no-store, private, no-transform
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 19 Jan 2021 18:47:59 GMT
+      - Tue, 19 Jan 2021 18:51:09 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-den8253-DEN
+      - cache-den8239-DEN
       X-Cache:
       - MISS
       X-Cache-Hits:
@@ -73,5 +73,5 @@ http_interactions:
         N Elizabeth St", "Ste 120", "Pueblo, CO 81008"]}, "phone": "+17195440233",
         "display_phone": "(719) 544-0233", "distance": 6632.28027227077}], "total":
         14, "region": {"center": {"longitude": -104.5733642578125, "latitude": 38.27035217485165}}}'
-  recorded_at: Tue, 19 Jan 2021 18:47:59 GMT
+  recorded_at: Tue, 19 Jan 2021 18:51:09 GMT
 recorded_with: VCR 6.0.0
