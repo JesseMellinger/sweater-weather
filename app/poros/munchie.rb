@@ -5,10 +5,10 @@ class Munchie
               :forecast,
               :restaurant
 
-  def initialize(destination, eta, forecast_response, restaurant_response)
+  def initialize(destination, time, forecast_response, restaurant_response)
     @id = nil
     @destination_city = format_destination_city(destination)
-    @travel_time = format_time(eta)
+    @travel_time = format_time(time)
     @forecast = get_current_weather(forecast_response)
     @restaurant =  get_restaurant(restaurant_response)
   end
