@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.flickr.com/services/rest?api_key=<FLICKR_API_KEY>&extras=url_l&format=json&method=flickr.photos.search&per_page=1&tags=denver,co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/javascript; charset=utf-8
+      Content-Length:
+      - '269'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 19 Jan 2021 01:50:10 GMT
+      Server:
+      - Apache/2.4.46 (Ubuntu)
+      X-Content-Type-Options:
+      - nosniff
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 cddde15c11afac53ac9fe7978dcfecd7.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - r__u0HZ90Z8c-PTrC10c_jM3BCER4itHWRadGNu-vR0qhR55m3T6gA==
+    body:
+      encoding: ASCII-8BIT
+      string: jsonFlickrApi({"photos":{"page":1,"pages":69812,"perpage":1,"total":"69812","photo":[{"id":"50837028496","owner":"189196487@N04","secret":"516540d729","server":"65535","farm":66,"title":"Denver
+        Police","ispublic":1,"isfriend":0,"isfamily":0,"url_l":"https:\/\/live.staticflickr.com\/65535\/50837028496_516540d729_b.jpg","height_l":576,"width_l":1024}]},"stat":"ok"})
+  recorded_at: Tue, 19 Jan 2021 01:50:10 GMT
+recorded_with: VCR 6.0.0
