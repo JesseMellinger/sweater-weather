@@ -14,7 +14,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter "spec/rails_helper"
+end
 require 'webmock/rspec'
 
 RSpec.configure do |config|

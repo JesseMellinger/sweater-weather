@@ -16,7 +16,6 @@ RSpec.describe 'WeatherService' do
     expect(response).to have_key(:current)
     expect(response[:current]).to be_a(Hash)
 
-    expect(response[:minutely]).to be_nil
     expect(response[:alerts]).to be_nil
 
     expect(response[:current]).to have_key(:dt)
@@ -56,7 +55,7 @@ RSpec.describe 'WeatherService' do
       expect(day).to have_key(:temp)
       expect(day[:temp]).to be_an(Hash)
       expect(day[:temp]).to have_key(:min)
-      expect(day[:temp][:min]).to be_an(Float)
+      expect(day[:temp][:min]).to be_a_kind_of(Numeric)
       expect(day[:temp]).to have_key(:max)
       expect(day[:temp][:max]).to be_an(Float)
       expect(day).to have_key(:weather)
