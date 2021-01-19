@@ -99,7 +99,6 @@ describe 'forecast' do
       expect(hour[:icon]).to be_a(String)
     end
 
-    expect(forecast[:data][:attributes][:current_weather][:minutely]).to be_nil
     expect(forecast[:data][:attributes][:current_weather][:alerts]).to be_nil
     expect(forecast[:data][:attributes][:current_weather][:pressure]).to be_nil
     expect(forecast[:data][:attributes][:current_weather][:clouds]).to be_nil
@@ -113,7 +112,7 @@ describe 'forecast' do
     get '/api/v1/forecast', params: location_params
 
     response_data = JSON.parse(response.body, symbolize_names: true)
-    
+
     expect(response_data).to be_a(Hash)
 
     expect(response_data).to have_key(:message)
