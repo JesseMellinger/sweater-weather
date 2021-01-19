@@ -13,18 +13,7 @@ class Forecast
 
   private
   def get_current_weather(weather_data)
-    current_weather = Hash.new
-    current_weather[:datetime] = Time.at(weather_data[:current][:dt]).to_s
-    current_weather[:sunrise] = Time.at(weather_data[:current][:sunrise]).to_s
-    current_weather[:sunset] = Time.at(weather_data[:current][:sunset]).to_s
-    current_weather[:temperature] = weather_data[:current][:temp].to_f
-    current_weather[:feels_like] = weather_data[:current][:feels_like].to_f
-    current_weather[:humidity] = weather_data[:current][:humidity]
-    current_weather[:uvi] = weather_data[:current][:uvi]
-    current_weather[:visibility] = weather_data[:current][:visibility]
-    current_weather[:conditions] = weather_data[:current][:weather].first[:description]
-    current_weather[:icon] = weather_data[:current][:weather].first[:icon]
-    current_weather
+    CurrentWeather.new(weather_data)
   end
 
   def get_daily_weather(weather_data)
