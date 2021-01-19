@@ -55,4 +55,23 @@ describe 'road trip' do
     expect(endpoint_response[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
     expect(endpoint_response[:data][:attributes][:weather_at_eta][:conditions]).to be_a(String)
   end
+
+  it 'returns error response with 401 status code if api key is not given or is incorrect (sad path)' do
+    payload = {
+                "origin": "Denver,CO",
+                "destination": "Pueblo,CO",
+                "api_key": ''
+              }
+
+    post '/api/v1/road_trip', params: payload.to_json
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(401)
+
+    endpoint_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(endpoint_response).to be_a(Hash)
+    expect(endpoint_response).to have_key(:message)
+    expect(endpoint_response[:message]).to eq("Invalid API key")
+  end
 end
