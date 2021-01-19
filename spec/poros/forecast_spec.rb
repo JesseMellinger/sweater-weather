@@ -26,20 +26,13 @@ RSpec.describe Forecast do
     expect(forecast.daily_weather.count).to eq(5)
 
     forecast.daily_weather.each do |day|
-      expect(day).to have_key(:date)
-      expect(day[:date]).to be_a(String)
-      expect(day).to have_key(:sunrise)
-      expect(day[:sunrise]).to be_a(String)
-      expect(day).to have_key(:sunset)
-      expect(day[:sunset]).to be_a(String)
-      expect(day).to have_key(:max_temp)
-      expect(day[:max_temp]).to be_a(Float)
-      expect(day).to have_key(:min_temp)
-      expect(day[:min_temp]).to be_a(Float)
-      expect(day).to have_key(:conditions)
-      expect(day[:conditions]).to be_a(String)
-      expect(day).to have_key(:icon)
-      expect(day[:icon]).to be_a(String)
+      expect(day.date).to be_a(String)
+      expect(day.sunrise).to be_a(String)
+      expect(day.sunset).to be_a(String)
+      expect(day.max_temp).to be_a(Float)
+      expect(day.min_temp).to be_a(Float)
+      expect(day.conditions).to be_a(String)
+      expect(day.icon).to be_a(String)
     end
 
     expect(forecast.hourly_weather).to be_an(Array)
