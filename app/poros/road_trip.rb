@@ -5,12 +5,12 @@ class RoadTrip
               :travel_time,
               :weather_at_eta
 
-  def initialize(origin, destination, route_data, forecast_data)
+  def initialize(origin, destination, *route_and_forecast_data)
     @id = nil
     @start_city = origin.gsub(',', ', ')
     @end_city = destination.gsub(',', ', ')
-    @travel_time = format_time(route_data[:route][:time])
-    @weather_at_eta = get_weather(forecast_data, route_data[:route][:time])
+    @travel_time = set_travel_time(route_and_forecast_data)
+    @weather_at_eta = set_weather_at_eta(route_and_forecast_data)
   end
 
   private
@@ -34,5 +34,15 @@ class RoadTrip
     hours = forecast_data[:hourly].group_by { |hour| hour[:dt] <=> unix_eta }
     hour = hours[0] ? hours[0].first : hours[-1].last
     return hour[:temp], hour[:weather].first[:description]
+  end
+
+  def set_travel_time(route_and_forecast_data)
+    return format_time(route_and_forecast_data.first[:route][:time]) if !route_and_forecast_data.empty?
+    return "Impossible Route"
+  end
+
+  def set_weather_at_eta(route_and_forecast_data)
+    return get_weather(route_and_forecast_data.last, route_and_forecast_data.first[:route][:time]) if !route_and_forecast_data.empty?
+    return {}
   end
 end
