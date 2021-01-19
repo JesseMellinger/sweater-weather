@@ -6,6 +6,8 @@ class Api::V1::RoadTripController < ApplicationController
     if user
       trip = RoadTripFacade.get_trip(payload[:origin], payload[:destination])
       return render json: RoadTripSerializer.new(trip)
+    else
+      render json: {message: "Invalid API key"}, status: :unauthorized
     end
   end
 end
