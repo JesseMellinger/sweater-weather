@@ -9,8 +9,8 @@ class Munchie
     @id = nil
     @destination_city = format_destination_city(destination)
     @travel_time = format_time(eta)
-    @forecast = format_forecast(forecast_response)
-    @restaurant =  format_restaurant(restaurant_response)
+    @forecast = get_current_weather(forecast_response)
+    @restaurant =  get_restaurant(restaurant_response)
   end
 
   private
@@ -27,17 +27,11 @@ class Munchie
     "%d hours, %d minutes" % [hh, mm]
   end
 
-  def format_forecast(forecast_response)
-    forecast = Hash.new
-    forecast[:summary] = forecast_response[:current][:weather].first[:description]
-    forecast[:temperature] = forecast_response[:current][:temp].to_s
-    forecast
+  def get_current_weather(forecast_response)
+    CurrentWeather.new(forecast_response)
   end
 
-  def format_restaurant(restaurant_response)
-    restaurant = Hash.new
-    restaurant[:name] = restaurant_response[:businesses].first[:name]
-    restaurant[:address] = restaurant_response[:businesses].first[:location][:display_address].join(', ')
-    restaurant
+  def get_restaurant(restaurant_response)
+    Restaurant.new(restaurant_response)
   end
 end
