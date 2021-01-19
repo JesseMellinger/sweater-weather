@@ -18,15 +18,7 @@ class Forecast
 
   def get_daily_weather(weather_data)
     daily_weather = weather_data[:daily].first(5).map do |day_data|
-      day = Hash.new
-      day[:date] = Time.at(day_data[:dt]).strftime("%F")
-      day[:sunrise] = Time.at(day_data[:sunrise]).to_s
-      day[:sunset] = Time.at(day_data[:sunset]).to_s
-      day[:max_temp] = day_data[:temp][:max]
-      day[:min_temp] = day_data[:temp][:min]
-      day[:conditions] = day_data[:weather].first[:description]
-      day[:icon] = day_data[:weather].first[:icon]
-      day
+      DailyWeather.new(day_data)
     end
     daily_weather
   end
