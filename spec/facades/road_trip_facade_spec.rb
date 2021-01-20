@@ -14,11 +14,9 @@ RSpec.describe RoadTripFacade do
       expect(trip.start_city).to be_a(String)
       expect(trip.travel_time).to be_a(String)
 
-      expect(trip.weather_at_eta).to be_a(Hash)
-      expect(trip.weather_at_eta).to have_key(:temperature)
-      expect(trip.weather_at_eta[:temperature]).to be_a(Float)
-      expect(trip.weather_at_eta).to have_key(:conditions)
-      expect(trip.weather_at_eta[:conditions]).to be_a(String)
+      expect(trip.weather_at_eta).to be_a(Weather)
+      expect(trip.weather_at_eta.temperature).to be_a(Float)
+      expect(trip.weather_at_eta.conditions).to be_a(String)
     end
 
     it '.get_trip (sad path)', :vcr do
