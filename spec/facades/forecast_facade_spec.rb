@@ -41,18 +41,12 @@ RSpec.describe ForecastFacade do
       expect(forecast.hourly_weather.count).to eq(8)
 
       forecast.hourly_weather.each do |hour|
-        expect(hour).to have_key(:time)
-        expect(hour[:time]).to be_a(String)
-        expect(hour).to have_key(:temperature)
-        expect(hour[:temperature]).to be_a(Float)
-        expect(hour).to have_key(:wind_speed)
-        expect(hour[:wind_speed]).to be_a(String)
-        expect(hour).to have_key(:wind_direction)
-        expect(hour[:wind_direction]).to be_a(String)
-        expect(hour).to have_key(:conditions)
-        expect(hour[:conditions]).to be_a(String)
-        expect(hour).to have_key(:icon)
-        expect(hour[:icon]).to be_a(String)
+        expect(hour.time).to be_a(String)
+        expect(hour.temperature).to be_a(Float)
+        expect(hour.wind_speed).to be_a(String)
+        expect(hour.wind_direction).to be_a(String)
+        expect(hour.conditions).to be_a(String)
+        expect(hour.icon).to be_a(String)
       end
     end
 
